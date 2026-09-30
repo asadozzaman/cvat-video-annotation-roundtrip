@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>5</id>
+      <name>CVAT Mini Test - Round Trip</name>
+      <size>60</size>
+      <mode>interpolation</mode>
+      <overlap>0</overlap>
+      <bugtracker></bugtracker>
+      <created>2026-09-30 15:07:29.706892+00:00</created>
+      <updated>2026-09-30 15:07:34.049213+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>59</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>5</id>
+          <start>0</start>
+          <stop>59</stop>
+          <url>http://localhost:8080/api/tasks/5/dataset/export/api/jobs/5</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>cvat_mini_admin</username>
+        <email>cvat-mini-admin@localhost.invalid</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>test_object</name>
+          <color>#a42b0d</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>640</width>
+        <height>360</height>
+      </original_size>
+      <source>synthetic_tracking.mp4</source>
+    </task>
+    <dumped>2026-09-30 15:07:38.180201+00:00</dumped>
+  </meta>
+  <track id="0" label="test_object" source="file">
+    <box frame="5" keyframe="1" outside="0" occluded="0" xtl="100.00" ytl="120.00" xbr="190.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="6" keyframe="1" outside="0" occluded="0" xtl="104.00" ytl="120.00" xbr="194.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="7" keyframe="1" outside="0" occluded="0" xtl="108.00" ytl="120.00" xbr="198.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="8" keyframe="1" outside="0" occluded="0" xtl="112.00" ytl="120.00" xbr="202.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="9" keyframe="1" outside="0" occluded="0" xtl="116.00" ytl="120.00" xbr="206.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="10" keyframe="1" outside="0" occluded="0" xtl="120.00" ytl="120.00" xbr="210.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="11" keyframe="1" outside="0" occluded="0" xtl="124.00" ytl="120.00" xbr="214.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="12" keyframe="1" outside="0" occluded="0" xtl="128.00" ytl="120.00" xbr="218.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="13" keyframe="1" outside="0" occluded="0" xtl="132.00" ytl="120.00" xbr="222.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="14" keyframe="1" outside="0" occluded="0" xtl="136.00" ytl="120.00" xbr="226.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="15" keyframe="1" outside="0" occluded="0" xtl="140.00" ytl="120.00" xbr="230.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="16" keyframe="1" outside="0" occluded="0" xtl="144.00" ytl="120.00" xbr="234.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="17" keyframe="1" outside="0" occluded="0" xtl="148.00" ytl="120.00" xbr="238.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="18" keyframe="1" outside="0" occluded="0" xtl="152.00" ytl="120.00" xbr="242.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="19" keyframe="1" outside="0" occluded="0" xtl="156.00" ytl="120.00" xbr="246.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="20" keyframe="1" outside="0" occluded="0" xtl="160.00" ytl="120.00" xbr="250.00" ybr="180.00" z_order="0">
+    </box>
+    <box frame="21" keyframe="1" outside="1" occluded="0" xtl="164.00" ytl="120.00" xbr="254.00" ybr="180.00" z_order="0">
+    </box>
+  </track>
+</annotations>

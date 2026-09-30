@@ -1,0 +1,15 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.log
+*.tmp
+*.part
+*.zip
+!sample/output/source_annotations.zip
+!sample/output/round_trip_annotations.zip
+sample/output/*.download
+sample/output/*.archive
+local_credentials*
+

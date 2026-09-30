@@ -1,0 +1,5 @@
+cvat-sdk==2.76.0
+opencv-python-headless==4.11.0.86
+numpy==1.26.4
+python-dotenv==1.1.1
+

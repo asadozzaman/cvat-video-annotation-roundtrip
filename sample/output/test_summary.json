@@ -1,0 +1,79 @@
+{
+  "annotation_format": "CVAT for video 1.1",
+  "checks": {
+    "EXPORT EXISTS": true,
+    "EXPORT PARSE": true,
+    "EXPORT TASK ID": true,
+    "EXPORTED COORDINATES": true,
+    "EXPORTED FRAME IDS": true,
+    "EXPORTED KEYFRAMES": true,
+    "EXPORTED LABEL": true,
+    "FRAME 10 MAPPING": true,
+    "FRAME 20 MAPPING": true,
+    "FRAME 5 MAPPING": true,
+    "FRAME INDEXING": true,
+    "ROUND TRIP COORDINATES": true,
+    "ROUND TRIP EXPORTED KEYFRAMES": true,
+    "ROUND TRIP FRAME IDS": true,
+    "ROUND TRIP FRAME SIZE": true,
+    "ROUND TRIP IMPORT": true,
+    "ROUND TRIP JOB": true,
+    "ROUND TRIP LABEL": true,
+    "ROUND TRIP TASK FRAME COUNT": true,
+    "ROUND TRIP TASK STATUS": true,
+    "ROUND TRIP TRACK LABEL": true,
+    "SOURCE FRAME SIZE": true,
+    "SOURCE JOB": true,
+    "SOURCE LABEL": true,
+    "SOURCE TASK FRAME COUNT": true,
+    "SOURCE TASK STATUS": true,
+    "SOURCE TRACK COUNT": true,
+    "SOURCE TRACK GEOMETRY": true,
+    "SOURCE TRACK LABEL": true,
+    "VIDEO DURATION": true,
+    "VIDEO FPS": true,
+    "VIDEO FRAME COUNT": true,
+    "VIDEO HEIGHT": true,
+    "VIDEO OPEN": true,
+    "VIDEO WIDTH": true
+  },
+  "cvat_version": "2.76.0",
+  "first_annotation_frame": 5,
+  "frame_mapping": {
+    "10": {
+      "closest_source_frame": 10,
+      "cvat_api_frame": 10,
+      "mean_squared_error": 0.07611111111111112
+    },
+    "20": {
+      "closest_source_frame": 20,
+      "cvat_api_frame": 20,
+      "mean_squared_error": 0.06
+    },
+    "5": {
+      "closest_source_frame": 5,
+      "cvat_api_frame": 5,
+      "mean_squared_error": 0.07585648148148148
+    }
+  },
+  "last_annotation_frame": 20,
+  "outside_frame": 21,
+  "python_version": "3.10.10",
+  "round_trip_job_ids": [
+    5
+  ],
+  "round_trip_task_id": 5,
+  "source_job_ids": [
+    4
+  ],
+  "source_task_id": 4,
+  "track_count": 1,
+  "validation_result": "PASS",
+  "video": {
+    "duration_seconds": 6.0,
+    "fps": 10.0,
+    "frames": 60,
+    "height": 360,
+    "width": 640
+  }
+}

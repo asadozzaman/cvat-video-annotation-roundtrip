@@ -1,0 +1,220 @@
+{
+  "labels": [
+    "test_object"
+  ],
+  "size": "60",
+  "task_name": "CVAT Mini Test - Source",
+  "tracks": [
+    {
+      "boxes": [
+        {
+          "frame": 5,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            100.0,
+            120.0,
+            190.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 6,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            104.0,
+            120.0,
+            194.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 7,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            108.0,
+            120.0,
+            198.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 8,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            112.0,
+            120.0,
+            202.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 9,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            116.0,
+            120.0,
+            206.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 10,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            120.0,
+            120.0,
+            210.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 11,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            124.0,
+            120.0,
+            214.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 12,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            128.0,
+            120.0,
+            218.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 13,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            132.0,
+            120.0,
+            222.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 14,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            136.0,
+            120.0,
+            226.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 15,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            140.0,
+            120.0,
+            230.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 16,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            144.0,
+            120.0,
+            234.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 17,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            148.0,
+            120.0,
+            238.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 18,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            152.0,
+            120.0,
+            242.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 19,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            156.0,
+            120.0,
+            246.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 20,
+          "keyframe": true,
+          "occluded": false,
+          "outside": false,
+          "points": [
+            160.0,
+            120.0,
+            250.0,
+            180.0
+          ]
+        },
+        {
+          "frame": 21,
+          "keyframe": true,
+          "occluded": false,
+          "outside": true,
+          "points": [
+            164.0,
+            120.0,
+            254.0,
+            180.0
+          ]
+        }
+      ],
+      "id": 0,
+      "label": "test_object"
+    }
+  ],
+  "version": "1.1"
+}

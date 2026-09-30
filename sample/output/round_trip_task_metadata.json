@@ -1,0 +1,44 @@
+{
+  "data_meta": {
+    "frame_filter": "",
+    "frames": [
+      {
+        "has_related_context": false,
+        "height": 360,
+        "name": "synthetic_tracking.mp4",
+        "related_files": 0,
+        "width": 640
+      }
+    ],
+    "size": 60,
+    "start_frame": 0,
+    "stop_frame": 59
+  },
+  "jobs": [
+    {
+      "frame_count": 60,
+      "id": 5,
+      "start_frame": 0,
+      "status": "annotation",
+      "stop_frame": 59,
+      "task_id": 5,
+      "type": "annotation"
+    }
+  ],
+  "labels": [
+    {
+      "id": 5,
+      "name": "test_object",
+      "type": "any"
+    }
+  ],
+  "task": {
+    "dimension": "2d",
+    "id": 5,
+    "media_type": "image",
+    "mode": "interpolation",
+    "name": "CVAT Mini Test - Round Trip",
+    "size": 60,
+    "status": "annotation"
+  }
+}
