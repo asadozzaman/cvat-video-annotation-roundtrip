@@ -10,7 +10,7 @@ The recorded run used CVAT 2.76.0 and passed. See the [experiment report](report
 
 ## Explore the visual showcase
 
-The five-page [showcase](docs/index.html) explains the workflow, lets you switch between source and annotated frames, displays all 35 validation checks, and gives reproduction steps. Preview it locally from this repository:
+The five-page [live showcase](https://asadozzaman.github.io/cvat-video-annotation-roundtrip/) explains the workflow, lets you switch between source and annotated frames, displays all 35 validation checks, and gives reproduction steps. Its [source files](docs/index.html) are in `docs/`. Preview it locally from this repository:
 
 ```powershell
 python -m http.server 8000 -d docs
