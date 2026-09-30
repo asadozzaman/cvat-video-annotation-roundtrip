@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c151b"><meta name="description" content="A verified CVAT video annotation API round trip, from MP4 upload to frame-level validation.">
+  <title>CVAT Round Trip — Video Annotation API Test</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="overview">
+  <div id="site-header"></div>
+  <main>
+    <section class="hero"><div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Verified CVAT integration / Python + REST API</p>
+        <h1>One video.<br>Two tasks.<br><span class="accent">Zero frame shifts.</span></h1>
+        <p class="lead">A compact engineering test that creates a CVAT video task, writes a tracked rectangle, exports the annotations, imports them into a clean task, and checks the result frame by frame.</p>
+        <div class="button-row"><a class="button" href="evidence.html">Explore the evidence <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="workflow.html">See the workflow <span aria-hidden="true">→</span></a></div>
+      </div>
+      <div class="hero-art" aria-label="Annotated synthetic tracking video frame">
+        <div class="art-top"><span>Frame inspection / 010</span><span><i class="live-dot"></i>CVAT output</span></div>
+        <img src="assets/evidence_frame_010.jpg" alt="Source video frame 010 with a green CVAT annotation around the moving orange rectangle" width="640" height="360">
+        <div class="art-bottom"><span>test_object · rectangle track</span><span>640 × 360</span></div>
+      </div>
+    </div></section>
+    <section class="section-tight"><div class="container metrics" aria-label="Verified experiment metrics">
+      <div class="metric"><strong data-value="video.frames">60</strong><span>Video frames</span></div>
+      <div class="metric"><strong data-value="annotation.trackCount">1</strong><span>Continuous track</span></div>
+      <div class="metric"><strong>3 / 3</strong><span>Sampled frames aligned</span></div>
+      <div class="metric"><strong data-check-count>35</strong><span>Passing validations</span></div>
+    </div></section>
+    <section class="section"><div class="container">
+      <div class="section-heading"><p class="eyebrow">What this proves</p><h2>An API workflow with evidence at every boundary.</h2><p>The test reads back what CVAT actually produced. A successful upload alone is never treated as the final result.</p></div>
+      <div class="cards-3">
+        <article class="card"><span class="card-index">01 / CREATE</span><div class="card-icon">▣</div><h3>Video task and media</h3><p>A numbered 60-frame MP4, label, job, and media metadata are created and inspected through CVAT.</p></article>
+        <article class="card"><span class="card-index">02 / ROUND TRIP</span><div class="card-icon">⇄</div><h3>Track export and import</h3><p>One rectangle track becomes CVAT video XML, then returns to a second clean task without a frame or coordinate shift.</p></article>
+        <article class="card"><span class="card-index">03 / VERIFY</span><div class="card-icon">✓</div><h3>Independent validation</h3><p>Python compares live annotations, both CVAT exports, and CVAT-served frames against the source video.</p></article>
+      </div>
+    </div></section>
+    <section class="section band"><div class="container split">
+      <div class="image-panel"><img src="assets/evidence_frame_005.jpg" alt="Annotated frame 005 from the round-trip CVAT task" width="640" height="360"><div class="image-caption"><span>Actual round-trip annotation</span><span>Frame / 005</span></div></div>
+      <div><p class="eyebrow">Frame indexing / measured</p><h2>The frame says 005. CVAT says 5.</h2><p class="lead">For frames 5, 10, and 20, CVAT’s served frame image matched the same zero-based source frame. Annotation API values, exported XML, and imported annotations kept those frame IDs.</p><ul class="check-list"><li>Visible frame ID burned into the MP4</li><li>Server-generated track and XML inspected</li><li>Clean-task import queried and re-exported</li></ul><a class="text-link" href="evidence.html">Inspect all sampled frames →</a></div>
+    </div></section>
+    <section class="section"><div class="container split">
+      <div><p class="eyebrow">The result</p><h2>A real CVAT run, not a simulated pass.</h2><p class="lead">The complete run produced source task <strong data-value="sourceTaskId">4</strong> and round-trip task <strong data-value="roundTripTaskId">5</strong> on CVAT <strong data-value="cvatVersion">2.76.0</strong>. The validator exited successfully after reading both tasks from the server.</p><div class="button-row"><a class="button" href="results.html">Review validation <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="reproduce.html">Run it yourself <span aria-hidden="true">→</span></a></div></div>
+      <div class="card"><span class="card-index">VALIDATION SUMMARY</span><div style="font-size:4.5rem;line-height:1;color:var(--mint);font-weight:750;letter-spacing:-.07em;margin:12px 0 20px">PASS</div><p>Video · task metadata · annotations · export · re-import · frame alignment</p><div style="height:1px;background:var(--line);margin:25px 0"></div><div class="detail-row"><span>CVAT version</span><strong data-value="cvatVersion">2.76.0</strong></div><div class="detail-row"><span>Source task</span><strong data-value="sourceTaskId">4</strong></div><div class="detail-row"><span>Round-trip task</span><strong data-value="roundTripTaskId">5</strong></div></div>
+    </div></section>
+  </main>
+  <div class="cta"><div class="container cta-inner"><div><h2>See how the result was built.</h2><p>Every step is reproducible from the repository.</p></div><a class="button" href="workflow.html">Explore the workflow →</a></div></div>
+  <div id="site-footer"></div>
+  <script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body>
+</html>

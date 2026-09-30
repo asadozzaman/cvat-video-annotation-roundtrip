@@ -1,8 +1,22 @@
 # CVAT Video Annotation API Mini Test
 
+![Annotated source video frame 010, returned from the imported CVAT task](docs/assets/evidence_frame_010.jpg)
+
+**One video · two CVAT tasks · 35 passing checks · zero observed frame shifts**
+
 This repository runs a small, reproducible video annotation experiment against a local CVAT server. Python creates a numbered MP4, uploads it as a CVAT task, writes one rectangle track through the annotation API, exports CVAT video XML, imports it into a clean task, and checks the round trip against live CVAT responses.
 
 The recorded run used CVAT 2.76.0 and passed. See the [experiment report](reports/CVAT_MINI_TEST_REPORT.md) and [machine-readable results](sample/output/test_summary.json).
+
+## Explore the visual showcase
+
+The five-page [showcase](docs/index.html) explains the workflow, lets you switch between source and annotated frames, displays all 35 validation checks, and gives reproduction steps. Preview it locally from this repository:
+
+```powershell
+python -m http.server 8000 -d docs
+```
+
+Open **http://localhost:8000** in your browser. The site is static and uses checked-in results from the real CVAT run; visitors do not need a running CVAT server. After a new passing run, `python scripts/run_demo.py` regenerates the evidence images and site data. You can also rebuild the site from existing passing outputs with `python scripts/build_site.py`.
 
 ## What it demonstrates
 
@@ -57,6 +71,7 @@ python scripts/export_annotations.py
 python scripts/reimport_annotations.py
 python scripts/validate_alignment.py
 python scripts/generate_visual_evidence.py
+python scripts/build_site.py
 ```
 
 `run_demo.py` creates two new tasks on each run and records their IDs in `sample/output/run_state.json`. It does not delete previous tasks. The validation command exits 0 only when all checks pass, otherwise 1. It reads both tasks again from CVAT and generates a fresh round-trip export, so a cached success file cannot make it pass.
@@ -76,7 +91,7 @@ The JPEGs overlay boxes retrieved from the round-trip task on decoded source fra
 
 ## Repository layout
 
-`scripts/common.py` holds configuration, geometry, API connection, bounded background polling, and export parsing. Each named step has a corresponding script in `scripts/`. `sample/input/` contains the video; `sample/output/` contains CVAT outputs and evidence; `reports/` contains the engineering report.
+`scripts/common.py` holds configuration, geometry, API connection, bounded background polling, and export parsing. Each named step has a corresponding script in `scripts/`. `sample/input/` contains the video; `sample/output/` contains CVAT outputs and evidence; `docs/` contains the static showcase; `reports/` contains the engineering report.
 
 ## Troubleshooting
 

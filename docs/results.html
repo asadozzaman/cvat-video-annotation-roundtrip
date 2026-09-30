@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0c151b"><meta name="description" content="Live CVAT validation results for the video annotation API round trip."><title>Validation Results — CVAT Round Trip</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"></head>
+<body data-page="results">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero"><div class="container result-hero">
+      <div><p class="eyebrow">Validation / actual command output</p><h1>Every boundary<br><span class="accent">checked.</span></h1><p class="lead">The validator read the two CVAT tasks, parsed both server-generated exports, compared coordinates, and matched served frames to decoded source frames. It returned exit code 0.</p><div class="inline-meta"><span class="chip chip-pass">Final result / PASS</span><span class="chip">No mock responses</span></div></div>
+      <div class="result-score"><span class="status">FINAL RESULT / PASS</span><strong data-check-count>35</strong><small>Passing checks</small><div class="progress" role="img" aria-label="All validation checks passed"><span></span></div></div>
+    </div></section>
+    <section class="section-tight"><div class="container metrics">
+      <div class="metric"><strong data-value="video.frames">60</strong><span>Video frames</span></div>
+      <div class="metric"><strong data-value="sourceTaskId">4</strong><span>Source task ID</span></div>
+      <div class="metric"><strong data-value="roundTripTaskId">5</strong><span>Round-trip task ID</span></div>
+      <div class="metric"><strong>3 / 3</strong><span>Frame samples matched</span></div>
+    </div></section>
+    <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">Check-by-check</p><h2>The pass is traceable.</h2><p>These groups come directly from the checked-in validation summary produced by the Python workflow.</p></div><div id="results-grid" class="results-grid" aria-label="Validation checks"></div></div></section>
+    <section class="section band"><div class="container split"><div><p class="eyebrow">Round trip / compared</p><h2>Source task to clean task, without drift.</h2><p class="lead">Both task APIs returned one track. Ordered frame IDs, rectangle points, and the outside boundary matched. A second export confirmed the imported XML retained its keyframes and boxes.</p><ul class="check-list"><li>Visible frames 5–20; outside at frame 21</li><li>Same coordinates in source and imported tasks</li><li>Same CVAT XML frame values and keyframes</li></ul></div><div class="card"><span class="card-index">SERVER-SIDE EVIDENCE</span><div class="detail-row"><span>CVAT version</span><strong data-value="cvatVersion">2.76.0</strong></div><div class="detail-row"><span>Source task</span><strong data-value="sourceTaskId">4</strong></div><div class="detail-row"><span>Imported task</span><strong data-value="roundTripTaskId">5</strong></div><div class="detail-row"><span>Export format</span><strong data-value="annotation.exportFormat">CVAT for video 1.1</strong></div><div class="detail-row"><span>Import format</span><strong data-value="annotation.importFormat">CVAT 1.1</strong></div><a class="text-link" data-report-link href="#" target="_blank" rel="noopener noreferrer">Read technical report ↗</a></div></div></section>
+  </main>
+  <div class="cta"><div class="container cta-inner"><div><h2>Review the frames yourself.</h2><p>The evidence viewer shows what each sampled frame contains.</p></div><a class="button" href="evidence.html">Inspect evidence →</a></div></div>
+  <div id="site-footer"></div><script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body></html>

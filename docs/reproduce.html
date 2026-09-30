@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0c151b"><meta name="description" content="Reproduce the local CVAT video annotation API test."><title>Reproduce the Test — CVAT Round Trip</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"></head>
+<body data-page="reproduce">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero"><div class="container"><p class="eyebrow">Reproducibility / local setup</p><h1>Run it on <span class="accent">your machine.</span></h1><p class="lead">The complete experiment is a local Python and Docker workflow. The static showcase is generated from its verified outputs; it is not a substitute for the API test.</p><div class="inline-meta"><span class="chip">Python 3.10</span><span class="chip">Docker Compose</span><span class="chip">CVAT <span data-value="cvatVersion">2.76.0</span></span></div></div></section>
+    <section class="section"><div class="container guide-grid">
+      <div>
+        <div class="guide-step" id="cvat"><p class="eyebrow">Step 01 / CVAT</p><h2>Start the official local stack.</h2><p>Keep CVAT’s checkout separate from this repository. The recorded run used release v2.76.0. Create a local CVAT account after the containers are ready.</p><div class="code-block"><div class="code-head"><span>PowerShell or Git Bash</span><button class="copy-button" type="button" data-copy="code-cvat">Copy</button></div><pre id="code-cvat">git clone --depth 1 --branch v2.76.0 https://github.com/cvat-ai/cvat.git ../cvat-upstream-v2.76.0
+cd ../cvat-upstream-v2.76.0
+docker compose up -d
+docker exec -it cvat_server python3 /opt/cvat/manage.py createsuperuser</pre></div></div>
+        <div class="guide-step" id="python"><p class="eyebrow">Step 02 / Python</p><h2>Install the pinned dependencies.</h2><p>Run these commands from the mini-test repository. On Linux or macOS, activate with <code>source .venv/bin/activate</code> and copy the environment file with <code>cp</code>.</p><div class="code-block"><div class="code-head"><span>PowerShell</span><button class="copy-button" type="button" data-copy="code-python">Copy</button></div><pre id="code-python">python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env</pre></div></div>
+        <div class="guide-step" id="credentials"><p class="eyebrow">Step 03 / Credentials</p><h2>Configure local authentication.</h2><p>Edit <code>.env</code> with your local CVAT username and password, or a personal access token. The real file is ignored by Git. Use <code>http://localhost:8080</code> unless your CVAT port differs.</p><div class="code-block"><div class="code-head"><span>.env example / placeholders only</span></div><pre>CVAT_BASE_URL=http://localhost:8080
+CVAT_USERNAME=your_local_username
+CVAT_PASSWORD=your_local_password
+CVAT_TOKEN=</pre></div></div>
+        <div class="guide-step" id="execute"><p class="eyebrow">Step 04 / Execute</p><h2>Run, validate, build the site.</h2><p>The orchestrator generates the video, creates two new tasks, uploads annotations, exports/imports, validates, generates visual evidence, and refreshes this static site’s data.</p><div class="code-block"><div class="code-head"><span>PowerShell or Git Bash</span><button class="copy-button" type="button" data-copy="code-run">Copy</button></div><pre id="code-run">python scripts/run_demo.py
+python scripts/validate_alignment.py
+python -m http.server 8000 -d docs</pre></div><p class="method-note">Open <code>http://localhost:8000</code> to preview the site locally. Each full run creates two new CVAT tasks and records their IDs in <code>sample/output/run_state.json</code>.</p></div>
+      </div>
+      <aside class="guide-aside"><div class="card"><span class="card-index">ON THIS PAGE</span><a href="#cvat">01 · Start CVAT</a><a href="#python">02 · Install Python</a><a href="#credentials">03 · Configure credentials</a><a href="#execute">04 · Run the test</a><div style="height:1px;background:var(--line);margin:17px 0"></div><p style="font-size:.82rem;margin-bottom:16px">The final validator prints <strong style="color:var(--mint)">FINAL RESULT: PASS</strong> only after checking live CVAT outputs.</p><a class="text-link" data-repo-link href="#" target="_blank" rel="noopener noreferrer">Open GitHub repository ↗</a></div></aside>
+    </div></section>
+    <section class="section band"><div class="container"><div class="section-heading"><p class="eyebrow">Review the source</p><h2>Small scripts. Clear evidence.</h2><p>Inspect the full implementation, report, and machine-readable outputs in the GitHub repository.</p></div><div class="file-list"><a class="file-link" href="https://github.com/asadozzaman/cvat-video-annotation-roundtrip/blob/main/scripts/run_demo.py" target="_blank" rel="noopener noreferrer">scripts/run_demo.py</a><a class="file-link" href="https://github.com/asadozzaman/cvat-video-annotation-roundtrip/blob/main/scripts/validate_alignment.py" target="_blank" rel="noopener noreferrer">scripts/validate_alignment.py</a><a class="file-link" href="https://github.com/asadozzaman/cvat-video-annotation-roundtrip/blob/main/sample/output/test_summary.json" target="_blank" rel="noopener noreferrer">sample/output/test_summary.json</a><a class="file-link" href="https://github.com/asadozzaman/cvat-video-annotation-roundtrip/blob/main/reports/CVAT_MINI_TEST_REPORT.md" target="_blank" rel="noopener noreferrer">reports/CVAT_MINI_TEST_REPORT.md</a></div></div></section>
+  </main>
+  <div class="cta"><div class="container cta-inner"><div><h2>Start with the measured result.</h2><p>See what the first local run produced.</p></div><a class="button" href="results.html">View results →</a></div></div>
+  <div id="site-footer"></div><script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body></html>

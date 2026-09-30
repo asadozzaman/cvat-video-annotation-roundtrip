@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0c151b"><meta name="description" content="The CVAT REST API workflow behind a verified video annotation round trip."><title>Workflow — CVAT Round Trip</title><link rel="icon" href="assets/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"></head>
+<body data-page="workflow">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero"><div class="container"><p class="eyebrow">Architecture / six steps</p><h1>From MP4 to <span class="accent">verified XML.</span></h1><p class="lead">The principal workflow runs through Python and CVAT’s REST-backed SDK. CVAT’s browser interface is only a way to inspect the resulting task.</p><div class="inline-meta"><span class="chip">CVAT <span data-value="cvatVersion">2.76.0</span></span><span class="chip">60 frames</span><span class="chip">1 tracked object</span></div></div></section>
+    <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">Execution path</p><h2>Each boundary is checked before moving on.</h2><p>Task creation, background processing, annotation storage, export, and import are separate operations with observable results.</p></div>
+      <div class="flow">
+        <article class="flow-card"><span class="step">01 / GENERATE</span><h3>Numbered source video</h3><p>OpenCV encodes a 60-frame MP4 and reopens the finished file to verify FPS, count, and dimensions.</p><span class="endpoint">synthetic_tracking.mp4</span></article>
+        <article class="flow-card"><span class="step">02 / CREATE</span><h3>Task, label, media</h3><p>CVAT receives the MP4 and a <code>test_object</code> label. The script waits for ingestion and reads the job and frame metadata.</p><span class="endpoint">POST /api/tasks · /data/</span></article>
+        <article class="flow-card"><span class="step">03 / ANNOTATE</span><h3>One video track</h3><p>Frames 5–20 carry explicit rectangle shapes; frame 21 ends the track with an outside flag.</p><span class="endpoint">PUT /api/tasks/{id}/annotations/</span></article>
+        <article class="flow-card"><span class="step">04 / EXPORT</span><h3>Server-generated XML</h3><p>The source task exports CVAT for video 1.1. Python parses its frames, coordinates, labels, keyframes, and outside flag.</p><span class="endpoint">POST /api/tasks/{id}/dataset/export</span></article>
+        <article class="flow-card"><span class="step">05 / IMPORT</span><h3>New, clean task</h3><p>The same video is attached to a second task. The exact CVAT archive is imported using the server’s CVAT 1.1 importer.</p><span class="endpoint">POST /api/tasks/{id}/annotations/</span></article>
+        <article class="flow-card"><span class="step">06 / VALIDATE</span><h3>Read, compare, inspect</h3><p>Live API annotations, both CVAT exports, and served frame images are checked against the expected video geometry.</p><span class="endpoint">GET /api/tasks/{id}/annotations/</span></article>
+      </div>
+    </div></section>
+    <section class="section band"><div class="container split"><div><p class="eyebrow">Annotation model</p><h2>Simple enough to audit frame by frame.</h2><p class="lead">The orange object moves four pixels right on each source frame. Its rectangle is recorded explicitly on every visible frame, so alignment checks do not depend on interpolation.</p><ul class="check-list"><li>Label: <code>test_object</code></li><li>Visible: source frames 5 through 20</li><li>Outside boundary: frame 21</li><li>CVAT XML reports every shape as a keyframe</li></ul></div><div class="code-block"><div class="code-head">Expected box / source frame f</div><pre>x  = 80 + 4 × f
+y  = 120
+w  = 90
+h  = 60
+
+CVAT points = [x, y, x + w, y + h]
+
+frame 10 → [120, 120, 210, 180]</pre></div></div></section>
+    <section class="section"><div class="container split"><div class="image-panel"><img src="assets/evidence_frame_020.jpg" alt="Round-trip rectangle annotation on video frame 020" width="640" height="360"><div class="image-caption"><span>Round-trip task / CVAT output</span><span>Frame / 020</span></div></div><div><p class="eyebrow">Asynchronous operations</p><h2>The server decides when work is done.</h2><p class="lead">Media ingestion, export, and import return background request IDs. Python polls their status and stops with a clear error if a request fails or exceeds 600 seconds.</p><a class="text-link" href="results.html">See the verified outcomes →</a></div></div></section>
+  </main>
+  <div class="cta"><div class="container cta-inner"><div><h2>Look at the actual frames.</h2><p>Switch between the source video and CVAT annotations.</p></div><a class="button" href="evidence.html">Open evidence →</a></div></div>
+  <div id="site-footer"></div><script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body></html>
