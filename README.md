@@ -1,4 +1,6 @@
-# CVAT Video Annotation API Mini Test
+# CVAT Video Annotation Round Trip
+
+[![Recorded evidence checks](https://github.com/asadozzaman/cvat-video-annotation-roundtrip/actions/workflows/ci.yml/badge.svg)](https://github.com/asadozzaman/cvat-video-annotation-roundtrip/actions/workflows/ci.yml)
 
 ![Annotated source video frame 010, returned from the imported CVAT task](docs/assets/evidence_frame_010.jpg)
 
@@ -7,6 +9,24 @@
 This repository runs a small, reproducible video annotation experiment against a local CVAT server. Python creates a numbered MP4, uploads it as a CVAT task, writes one rectangle track through the annotation API, exports CVAT video XML, imports it into a clean task, and checks the round trip against live CVAT responses.
 
 The recorded run used CVAT 2.76.0 and passed. See the [experiment report](reports/CVAT_MINI_TEST_REPORT.md) and [machine-readable results](sample/output/test_summary.json).
+
+## Why the experiment matters
+
+An annotation export can look valid while frame indices, visibility boundaries, or geometry have changed. This experiment checks those boundaries through two independent CVAT tasks. Track IDs are deliberately not used as an identity key because CVAT can renumber them.
+
+```mermaid
+flowchart TD
+    V["Numbered synthetic video"] --> S["Source CVAT task"]
+    V --> R["Clean CVAT task"]
+    S --> X["Exported video XML"]
+    X --> R
+    S --> C["Compare geometry and frame mapping"]
+    R --> C
+    V --> C
+    C --> E["JSON report + visual evidence"]
+```
+
+**Evidence boundary:** 35 passing checks are from the recorded local CVAT run. Image-to-source mapping was sampled at frames 5, 10, and 20. One synthetic track does not establish tracking accuracy or production-scale reliability.
 
 ## Explore the visual showcase
 
@@ -103,3 +123,13 @@ The JPEGs overlay boxes retrieved from the round-trip task on decoded source fra
 - **Format missing:** query `/api/server/annotation/formats` on the running version. The script checks both export and import names.
 
 No CVAT database, Docker volume, credential, or local checkout is part of this repository.
+
+## Automated checks
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The GitHub Actions workflow runs four **offline evidence-consistency tests**: report/site agreement, API/XML geometry, task/label identity, and published frame evidence. It also checks script syntax. No CVAT server or credentials are required.
+
+A green workflow means the checked-in experiment remains internally consistent. To obtain a **new live CVAT result**, configure a local server and run `python scripts/run_demo.py` as described above.
